@@ -1,0 +1,68 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.MainSection-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 100px);
+  position: absolute;
+  // min-height: calc(100vh + 100px);
+  padding: 0px 0px;
+  position: relative;
+  .MainSection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+
+    h1 {
+      font-size: clamp(60px, 7.2vw, 120px);
+      font-weight: normal;
+    }
+
+    p {
+      font-family: LailaMedium;
+      font-size: 1.25em;
+      color: $f_mainColor;
+    }
+
+    .MainSection-logo {
+      height: 60%;
+      @include set_glow(1);
+    }
+
+    button {
+      margin: 0;
+      width: 80%;
+      height: 50px;
+    }
+  }
+  .MainSection-tebing {
+    @include set_glow(0.2);
+    position: absolute;
+    height: 100%;
+    transform: translate(120%, 0%);
+  }
+}
+@media (max-width: 480px) {
+  .MainSection-wrapper {
+    margin-top: 5vh;
+    height: 80vh;
+    // min-height: calc(100vh + 400px);
+    .MainSection-tebing {
+      display: none;
+    }
+    .MainSection-container {
+      justify-content: center;
+      .MainSection-logo {
+        height: 60%;
+      }
+      button {
+        width: 60%;
+      }
+    }
+  }
+}

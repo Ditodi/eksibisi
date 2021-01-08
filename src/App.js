@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+  withRouter,
+} from "react-router-dom";
+import AppRoute from "./routes/AppRoute";
+import { routes, competitionRoutes } from "./routes/routes";
+import "./styles/base.scss";
+
+class _ScrollToTop extends React.Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  render() {
+    return this.props.children;
+  }
+}
+const ScrollToTop = withRouter(_ScrollToTop);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ScrollToTop>
+        <Switch>
+          {routes.map((route) => (
+            <AppRoute
+              exact
+              path={route.path}
+              key={route.path}
+              component={route.component}
+            />
+          ))}
+          {competitionRoutes.map((route) => (
+            <AppRoute
+              exact
+              path={route.path}
+              key={route.path}
+              component={route.component}
+            />
+          ))}
+          <Redirect to="/" />
+        </Switch>
+      </ScrollToTop>
+    </Router>
   );
 }
 

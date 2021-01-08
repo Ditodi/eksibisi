@@ -1,0 +1,89 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.form {
+  @include setup_size(50vw, 50vh);
+  background-color: #ffffff;
+  padding: 20px 35px;
+}
+
+.form-container {
+  @include setup_size(50vw, 50vh);
+  @include flex_center(column);
+  padding: 20px 35px;
+  & > * {
+    margin-top: 15px;
+  }
+}
+
+.inputField {
+  @include setup_size(100%, auto);
+  min-height: 50px;
+  @include flex_center(column);
+  margin-top: 15px;
+  & > * {
+    width: 100%;
+  }
+  label {
+    @include setup_font(16px, 400, LailaMedium);
+    flex: 1;
+    color: $f_mainColor2;
+    justify-self: flex-start;
+  }
+  input[type="text"],
+  input[type="number"],
+  select {
+    @include setup_font(18px, 600, LailaMedium);
+    @include default_transition(0.3s);
+    color: $f_mainColor;
+    flex: 4;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid $a_lightPurple;
+    &:focus {
+      font-size: 20px;
+    }
+  }
+  option {
+    @include setup_font(14px, 400, LailaMedium);
+  }
+  textarea {
+    @include setup_size(100%, clamp(200px, 250px, 300px));
+    @include setup_font(14px, 400, LailaMedium);
+    @include default_transition(0.3s);
+    color: $f_mainColor;
+    padding: 5px;
+    min-height: 100px;
+    border-radius: 8px;
+    border: 1px solid $a_lightPurple;
+    resize: none;
+    &:focus {
+      border: 1.5px solid $a_lightPurple;
+      font-size: 16px;
+    }
+  }
+  .error {
+    @include setup_font(clamp(8px, 10px, 12px), 600, LailaBold);
+    @include setup_size(100%, auto);
+    color: $f_mainColor2;
+    margin: 2px 0;
+    text-align: right;
+  }
+}
+
+.button {
+  @include setup_size(100%, clamp(50px, 75px, 100px));
+  @include setup_font(20px, 800, LailaBold);
+  @include default_transition(0.3s);
+  box-shadow: 0px 1px 10px rgba(255, 255, 255, 0.2);
+  color: white;
+  background-color: transparent;
+  border: 2px solid $f_mainColor;
+  border-radius: 8px;
+  margin-top: 50px;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+}

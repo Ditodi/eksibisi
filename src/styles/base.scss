@@ -1,0 +1,56 @@
+@import "./variables";
+@import "./mixin";
+
+@font-face {
+  font-family: Kopriva;
+  src: url("./fonts/Kopriva-imperfect-23.otf");
+}
+
+@font-face {
+  font-family: LailaMedium;
+  src: url("./fonts/Laila-Medium.ttf");
+}
+
+@font-face {
+  font-family: LailaBold;
+  src: url("./fonts/Laila-Bold.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../images/bg-langit-gelap.jpg");
+  background-size: cover;
+}
+
+h1,
+h2 {
+  font-family: Kopriva;
+  font-weight: normal;
+  color: $f_mainColor2;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 60px;
+  font-size: clamp(28px, 7.2vw, 72px);
+}
+
+h4 {
+  font-family: LailaBold;
+  font-size: clamp(14px, 2vw, 18px);
+  color: $f_mainColor;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.linkBuutton {
+  @include setup_size(100%, 100%);
+  @include flex_center(row);
+}
